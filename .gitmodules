@@ -1,0 +1,3 @@
+[submodule "Test-Suite"]
+	path = Test-Suite
+	url = https://github.com/SVF-tools/Test-Suite.git
