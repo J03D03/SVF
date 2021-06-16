@@ -115,7 +115,6 @@ public:
     }
     inline bool hasConstraintNode(NodeID id) const
     {
-        id = sccRepNode(id);
         return hasGNode(id);
     }
     inline void removeConstraintNode(ConstraintNode* node)
@@ -253,18 +252,6 @@ public:
     inline void resetSubs(NodeID node)
     {
         nodeToSubsMap.erase(node);
-    }
-    inline NodeBS& getSubs(NodeID node)
-    {
-        return nodeToSubsMap[node];
-    }
-    inline NodeID getRep(NodeID node)
-    {
-        return nodeToRepMap[node];
-    }
-    inline void resetRep(NodeID node)
-    {
-        nodeToRepMap.erase(node);
     }
     //@}
 

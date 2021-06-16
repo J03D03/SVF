@@ -15,9 +15,9 @@ namespace SVF
         llvm::cl::init(NodeIDAllocator::Strategy::DEBUG),
         llvm::cl::desc("Method of allocating (LLVM) values and memory objects as node IDs"),
         llvm::cl::values(
-            clEnumValN(NodeIDAllocator::Strategy::DENSE, "dense", "allocate objects together and values together, separately"),
+            clEnumValN(NodeIDAllocator::Strategy::DENSE, "dense", "allocate objects together and values together, separately (default)"),
             clEnumValN(NodeIDAllocator::Strategy::SEQ, "seq", "allocate values and objects sequentially, intermixed"),
-            clEnumValN(NodeIDAllocator::Strategy::DEBUG, "debug", "allocate value and objects sequentially, intermixed, except GEP objects as offsets (default)")));
+            clEnumValN(NodeIDAllocator::Strategy::DEBUG, "debug", "allocate value and objects sequentially, intermixed, except GEP objects as offsets")));
 
     const llvm::cl::opt<unsigned> Options::MaxFieldLimit(
         "field-limit",
@@ -665,6 +665,7 @@ namespace SVF
             clEnumValN(PointerAnalysis::AndersenHLCD_WPA, "hlander", "Hybrid lazy cycle detection inclusion-based analysis"),
             clEnumValN(PointerAnalysis::AndersenSCD_WPA, "sander", "Selective cycle detection inclusion-based analysis"),
             clEnumValN(PointerAnalysis::AndersenSFR_WPA, "sfrander", "Stride-based field representation includion-based analysis"),
+            clEnumValN(PointerAnalysis::AndersenWaveDiff_WPA, "wander", "Wave propagation inclusion-based analysis"),
             clEnumValN(PointerAnalysis::AndersenWaveDiff_WPA, "ander", "Diff wave propagation inclusion-based analysis"),
             clEnumValN(PointerAnalysis::Steensgaard_WPA, "steens", "Steensgaard's pointer analysis"),
             // Disabled till further work is done.

@@ -110,22 +110,13 @@ void ICFGBuilder::processFunBody(WorkList& worklist)
                     srcNode = retICFGNode;
                 }
 
-                
-                if (const BranchInst* br = SVFUtil::dyn_cast<BranchInst>(inst))
-                {
-                    if(br->isConditional())
-                        icfg->addConditionalIntraEdge(srcNode, dstNode, br->getCondition(), branchID);
-                    else 
-                        icfg->addIntraEdge(srcNode, dstNode);
-                }
+                const BranchInst* br = SVFUtil::dyn_cast<BranchInst>(inst);
 
-                if (const SwitchInst* si = SVFUtil::dyn_cast<SwitchInst>(inst))
-                {
-                    icfg->addConditionalIntraEdge(srcNode, dstNode, si->getCondition(),branchID);
-                }
+                if(br && br->isConditional())
+                    icfg->addConditionalIntraEdge(srcNode, dstNode, br->getCondition(), branchID);
                 else
                     icfg->addIntraEdge(srcNode, dstNode);
-                
+
                 worklist.push(succ);
                 branchID++;
             }
