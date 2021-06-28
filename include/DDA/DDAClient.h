@@ -111,6 +111,8 @@ public:
     /// Only collect function pointers as query candidates.
     virtual OrderedNodeSet& collectCandidateQueries(PAG* p);
     virtual void performStat(PointerAnalysis* pta);
+
+    const VTablePtrToCallSiteMap &getVtableToCallSiteMap() { return vtableToCallSiteMap; };
 };
 
 
